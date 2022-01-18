@@ -1,7 +1,6 @@
-import "../styles/App.scss";
 import { useState } from "react";
 // import callToApi from '../services/api';
-import adalabers from "../data/adalabers.json";
+import adalabersList from "../data/contacts.json";
 
 function App() {
   // Creo las variables de los contactos y para añadir un nuevo contacto
@@ -10,16 +9,14 @@ function App() {
   const [tutorAdalab, setTutorAdalab] = useState("");
   const [specialityAdalab, setSpecialityAdalab] = useState("");
 
-  const
-
   // Pinto la variable de estado para el nombre de las Adalabers y un map que recorra el array.
-  const [adalabers, setAdalabers] = useState([]);
+  const [adalabers, setAdalabers] = useState(adalabersList.results);
 
   const mainHeader = (title) => {
-    <h1>{title}</h1>;
+    return <h1>{title}</h1>;
   };
 
-  const listAdalabers = () => {
+  const getListAdalabers = () => {
     return adalabers.map((adalaber, index) => (
       <tr key={index}>
         <td>{adalaber.name}</td>
@@ -43,7 +40,7 @@ function App() {
           </tr>
         </thead>
 
-        <tbody>{listAdalabers()}</tbody>
+        <tbody>{getListAdalabers()}</tbody>
       </table>
     </div>
   );
